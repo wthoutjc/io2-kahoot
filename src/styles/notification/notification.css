@@ -1,0 +1,5 @@
+.notification {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 1em;
+  }

@@ -1,0 +1,16 @@
+{
+    "plugins": [],
+    "source": {
+        "include": ["src"],
+        "includePattern": ".tsx$",
+        "excludePattern": "(node_modules|dist)"
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospace": false
+    },
+    "opts": {
+        "recurse": "true",
+        "destination": "./documentation"
+    }
+}

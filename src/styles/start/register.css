@@ -1,0 +1,72 @@
+.register form {
+  width: 80%;
+  height: 70%;
+  border-radius: 0.5em;
+  border-bottom: 1px solid var(--color-blancoPrimario);
+  border-right: 1px solid var(--color-blancoPrimario);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+  padding: 1em;
+  background-color: var(--color-negroSecundario);
+}
+
+.register form .title {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 1em;
+}
+
+.register form .title button {
+  background-color: inherit;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-sizing: border-box;
+  padding: 0.5em;
+  cursor: pointer;
+}
+.register form .title button:focus {
+  border-bottom: 1px solid var(--color-blancoPrimario);
+}
+
+.register form span {
+  margin-bottom: 0.2em;
+}
+.register form select,
+.register form input {
+  outline: none;
+  border: none;
+  padding: 0.5em;
+  margin-bottom: 0.7em;
+  background-color: var(--color-blancoSecundario);
+  color: var(--color-negroPrimario);
+  border-radius: 0.4em;
+}
+.register form input::placeholder {
+  color: var(--color-grisSecundario);
+}
+.register form select option,
+.register form select {
+  cursor: pointer;
+  color: var(--color-negroPrimario);
+}
+.register form > button {
+  width: 100%;
+  border: none;
+  background-color: var(--color-blancoPrimario);
+  color: var(--color-negroPrimario);
+  box-sizing: border-box;
+  padding: 0.5em;
+  font-weight: 500;
+  border-radius: 0.4em;
+  cursor: pointer;
+}
+.register form > button:focus {
+  background-color: var(--color-blancoSecundario);
+  transition: all 0.2s;
+}

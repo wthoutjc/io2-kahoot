@@ -1,0 +1,30 @@
+.loader {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+.loader > div {
+  height: 15px;
+  width: 15px;
+  border: 3px solid #45474b;
+  border-top-color: #2a88e6;
+  border-radius: 50%;
+  animation: spin 1.5s infinite linear;
+}
+
+@media all and (max-width: 649px) {
+  .loader div {
+    height: 15px !important;
+    width: 15px !important;
+    border: 3px solid #45474b !important;
+    border-top-color: #2a88e6 !important;
+    border-radius: 50% !important;
+    animation: spin 1.5s infinite linear !important;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
