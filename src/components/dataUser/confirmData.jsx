@@ -7,16 +7,26 @@ import useUser from '../../hooks/useUser'
 // Icons
 import * as BsIcons from 'react-icons/bs'
 
+//Components
+import Slider from '../slider/slider'
+
 const ConfirmData = () => {
   const { user } = useUser()
 
   const [editMode, setEditMode] = useState(false)
-
   const [updateUser, setUpdateUser] = useState({ ...user })
+
+  const [renderSlider, setRenderSlider] = useState(false)
 
   const handleUpdateInfo = () => {
     console.log(updateUser)
   }
+
+  const handleStartTest = () => {
+    setRenderSlider(true)
+  }
+
+  if (renderSlider) return <Slider />
 
   return (
     <>
@@ -121,7 +131,7 @@ const ConfirmData = () => {
             Cada pregunta va a tener un soporte teórico ó una pequeña aplicación
             tipo calculadora para realizar los cálculos.
           </p>
-          <button>COMENZAR PRUEBA</button>
+          <button onClick={handleStartTest}>COMENZAR PRUEBA</button>
         </div>
       </div>
     </>
