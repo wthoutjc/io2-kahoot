@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import questionContext from '../context/questionContext'
+import { useCallback, useContext, useEffect } from 'react'
 
 const useQuestions = () => {
-  const [answers, setAnswers] = useState({
-    question1: null,
-    question2: null,
-    question3: null,
-    question4: null,
-    question5: null,
-  })
+  const { answers, setAnswers } = useContext(questionContext)
+
+  useEffect(() => {
+    console.log(answers)
+  }, [answers])
+
   return {
     answers,
     setAnswers,

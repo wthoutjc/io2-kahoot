@@ -1,0 +1,119 @@
+.header-card {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 1em 1em 1em;
+  display: flex;
+  flex-direction: column;
+}
+.header-card .helpers {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 0 1em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header-card .helpers .helpers-btn {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+.header-card .helpers .helpers-btn > button {
+  flex: 1 0 40%;
+  border: none;
+  cursor: pointer;
+  padding: 0.5em;
+}
+.header-card .helpers .helpers-btn > button:nth-child(1) {
+  background-color: #2980b9;
+  border-end-start-radius: 0.6em;
+}
+.header-card .helpers .helpers-btn > button:nth-child(2) {
+  background-color: #40739e;
+}
+.header-card .helpers .helpers-btn > button:nth-child(3) {
+  background-color: #218c74;
+}
+.header-card .helpers .helpers-btn > button:nth-child(4) {
+  background-color: #40407a;
+  border-end-end-radius: 0.6em;
+}
+.header-card .helpers .helpers-btn > button:hover {
+  background-color: var(--color-blancoPrimario);
+  color: var(--color-negroPrimario);
+  border-top: 2px solid var(--color-negroPrimario);
+  font-weight: 500;
+  transition: color 0.4s;
+}
+.header-card .question {
+  width: 100%;
+}
+.header-card .question h3,
+.header-card .question p {
+  box-sizing: border-box;
+  padding: 0.4em;
+}
+.header-card .question h3 {
+  border-radius: 0.3em;
+  border-bottom: 1px solid var(--color-blancoPrimario);
+  margin-bottom: 0.4em;
+}
+.header-card .question p {
+  font-weight: 200;
+  text-align: justify;
+}
+.answers-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1em;
+}
+.answers-card ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  list-style-type: none;
+}
+.answers-card ul li {
+  display: flex;
+}
+.answers-card ul li input[type='checkbox'] {
+  display: none;
+}
+.answers-card ul li label {
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0.4em;
+  border-radius: 0.3em;
+  border-bottom: 1px solid var(--color-blancoPrimario);
+}
+.checked {
+  background-color: var(--color-blancoPrimario);
+  color: var(--color-negroPrimario);
+  font-weight: 800 !important;
+  transition: background-color 0.9s;
+}
+@media all and (max-width: 749px) {
+  .header-card {
+    padding: 0;
+  }
+  .header-card .helpers {
+    width: 100%;
+  }
+  .header-card .helpers .helpers-btn {
+    width: 100%;
+  }
+  .header-card .helpers .helpers-btn > button {
+    flex: 1 0 10%;
+  }
+  .header-card .question p {
+    font-size: 80%;
+  }
+  .answers-card > * {
+    font-size: 80%;
+  }
+}

@@ -10,7 +10,7 @@
 .slider-content {
   display: grid;
   grid-template-rows: 10% 80% 10%;
-  width: 75%;
+  width: 85%;
   height: 85%;
   border-bottom: 1px solid var(--color-blancoPrimario);
   border-right: 1px solid var(--color-blancoPrimario);
@@ -23,6 +23,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 .slider-content-footer > .pag-indicator {
   width: 140px;
@@ -86,9 +87,14 @@
   background-color: var(--color-blancoPrimario);
   box-sizing: border-box;
   padding: 1em;
+  display: flex;
 }
 .slider-content-title > * {
   color: var(--color-negroPrimario);
+}
+.slider-content-title h1:last-child {
+  margin-left: 0.3em;
+  color: var(--color-grisPrimario);
 }
 .no-clic {
   cursor: not-allowed !important;
@@ -102,6 +108,50 @@
 }
 
 .no-clic:last-of-type:hover {
-    border-bottom: 1px solid var(--color-grisSecundario) !important;
-    border-right: 1px solid var(--color-grisSecundario) !important;
+  border-bottom: 1px solid var(--color-grisSecundario) !important;
+  border-right: 1px solid var(--color-grisSecundario) !important;
+}
+.finish-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--color-okPrimario);
+  padding: 1em;
+  border: none;
+  cursor: pointer;
+  /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
+  animation: opacityEffect 0.5s forwards ease;
+}
+.finish-btn:hover {
+  opacity: 1 !important;
+}
+.card-question {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  animation: opacityEffect2 0.5s forwards ease;
+}
+@keyframes opacityEffect {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+@keyframes opacityEffect2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1s;
+  }
+}
+@media all and (max-width: 749px) {
+  .slider-content-title h1 {
+    font-size: 120%;
+  }
 }

@@ -123,13 +123,14 @@ const ConfirmData = () => {
           <p>La prueba consta de cinco preguntas.</p>
           <p>La prueba consta de un tiempo total de 40 minutos.</p>
           <p>
-            La calificación de tu examen será en base a la información
+            La calificación de tu prueba será en base a la información
             registrada en nuestro sistema, por favor valídela.
           </p>
-          <p>Tres preguntas teóricas y dos preguntas prácticas.</p>
+          <p>Una pregunta teórica y cuatro preguntas prácticas.</p>
           <p>
             Cada pregunta va a tener un soporte teórico ó una pequeña aplicación
-            tipo calculadora para realizar los cálculos.
+            tipo calculadora para realizar los cálculos, sin embargo, va a tener
+            que interpretar los resultados.
           </p>
           <button onClick={handleStartTest}>COMENZAR PRUEBA</button>
         </div>
