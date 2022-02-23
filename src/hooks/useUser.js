@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom'
 import { useState, useCallback, useContext, useRef } from 'react'
 
 //Services
-import loginService from '../services/loginService'
-import logoutService from '../services/logoutService'
+import postService from '../services/postServices'
+import getService from '../services/getService'
 
 //URL States
 import urlStates from './urlStates'
@@ -20,62 +20,57 @@ const useUser = () => {
   const history = useHistory()
 
   const login = useCallback(
-    async ({ codeStudent, setLoading }) => {
-      const url = `${urlGeneral.current}users/${codeStudent}.json`
+    async ({ idStudent, setLoading }) => {
+      const url = `${urlGeneral.current}/login`
       try {
-        const settigns = {
-          headers: {
-            method: 'GET',
-            Accept: 'application/json',
-          },
-        }
         setLoading(true)
-        const data = await loginService({ url, settigns })
+        const params = { idStudent }
+        const data = await postService({ url, params })
         if (data) {
           setLoading(false)
           if (data[1]) {
-            // SIMULAR EL JWT
             setUser(data[0])
-            localStorage.setItem('jwt', JSON.stringify(data[0]))
+            localStorage.setItem('jwtStudent', data[0])
           } else {
             setUser(null)
-            localStorage.removeItem('jwt')
+            localStorage.removeItem('jwtStudent')
           }
           return data
         }
       } catch (error) {
         console.error(error)
         setUser(null)
-        localStorage.removeItem('jwt')
+        localStorage.removeItem('jwtStudent')
       }
     },
     [setUser]
   )
 
-  const logout = useCallback(
+  const verifyJWT = useCallback(
     async ({ setRender }) => {
-      const url = `${urlGeneral.current}/revokeToken`
+      const url = `${urlGeneral.current}/verifyJWT`
       try {
         setRender(true)
-        const data = await logoutService(localStorage.getItem('jwt'), url)
-        if (data) {
-          setRender(false)
-          localStorage.removeItem('jwt')
+        const data = await getService({ url })
+        if (data) setRender(false)
+        if (!data[1]) {
           setUser(null)
+          localStorage.removeItem('jwtStudent')
+          history.push('/error')
+          return false
         }
+        return true
       } catch (error) {
         console.error(error)
-        setUser(null)
-        localStorage.removeItem('jwt')
       }
     },
-    [setUser]
+    [setUser, history]
   )
 
   return {
     user,
     login,
-    logout,
+    verifyJWT,
   }
 }
 

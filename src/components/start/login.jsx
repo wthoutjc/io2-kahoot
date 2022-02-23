@@ -14,7 +14,7 @@ import useUser from '../../hooks/useUser'
 const Login = ({ setRenderRegister, setRenderModal, setChildrenModal }) => {
   const history = useHistory()
 
-  const [codeStudent, setCodeStudent] = useState(null)
+  const [idStudent, setIdStudent] = useState(null)
 
   // Loader
   const [loading, setLoading] = useState(false)
@@ -31,10 +31,10 @@ const Login = ({ setRenderRegister, setRenderModal, setChildrenModal }) => {
   }
 
   const handleLogin = () => {
-    if (!itsNumber(codeStudent)) {
+    if (!itsNumber(idStudent)) {
       return notifyError('Código no válido')
     }
-    login({ codeStudent, setLoading }).then((res) => {
+    login({ idStudent, setLoading }).then((res) => {
       if (!res[1]) {
         return notifyError(res[0])
       }
@@ -60,7 +60,7 @@ const Login = ({ setRenderRegister, setRenderModal, setChildrenModal }) => {
             id=""
             placeholder="Ej: 2018234567"
             onChange={(e) => {
-              setCodeStudent(e.target.value)
+              setIdStudent(e.target.value)
             }}
           />
         </div>

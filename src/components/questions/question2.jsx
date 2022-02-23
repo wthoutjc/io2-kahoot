@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 // Hook
 import useQuestions from '../../hooks/useQuestions'
@@ -16,6 +16,12 @@ const Question2 = () => {
     liDOM.setAttribute('class', 'checked')
     setAnswers({ ...answers, question2: x })
   }
+
+  useEffect(() => {
+    answersDOM.current.children[
+      answers.question2 - 1
+    ]?.children[1].setAttribute('class', 'checked')
+  }, [answers])
 
   return (
     <div className="card-question">

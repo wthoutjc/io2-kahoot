@@ -9,12 +9,19 @@ import * as BsIcons from 'react-icons/bs'
 
 //Components
 import Slider from '../slider/slider'
+import LoadingServer from '../loaders/loadingServer'
+import TimeModal from '../modal/timeModal'
+
+//decode jwt
+import decodeJWT from 'jwt-decode'
 
 const ConfirmData = () => {
-  const { user } = useUser()
+  const [render, setRender] = useState(false)
+
+  const { user, verifyJWT } = useUser()
 
   const [editMode, setEditMode] = useState(false)
-  const [updateUser, setUpdateUser] = useState({ ...user })
+  const [updateUser, setUpdateUser] = useState(decodeJWT(user).sub)
 
   const [renderSlider, setRenderSlider] = useState(false)
 
@@ -26,10 +33,16 @@ const ConfirmData = () => {
     setRenderSlider(true)
   }
 
+  useEffect(() => {
+    verifyJWT({ setRender })
+  }, [verifyJWT])
+
   if (renderSlider) return <Slider />
 
   return (
     <>
+      <LoadingServer render={render} />
+      <TimeModal renderTimeModal={true} />
       <div className="confirm-data">
         <div className="info-user">
           <h1>VERIFICA TU INFORMACIÓN</h1>
@@ -78,7 +91,7 @@ const ConfirmData = () => {
               name="codigo"
               id="codigo"
               className={editMode ? 'edit' : 'input-confirm-data'}
-              defaultValue={updateUser.codigo}
+              defaultValue={updateUser.id}
               readOnly={!editMode}
               onChange={(e) => {
                 const newCodigo = e.target.value
@@ -98,17 +111,17 @@ const ConfirmData = () => {
                 setUpdateUser({ ...updateUser, codigo: newEmail })
               }}
             />
-            <span>Facultad</span>
+            <span>Proyecto Curricular</span>
             <input
               type="text"
-              name="facultad"
-              id="facultad"
+              name="proyecto_curricular"
+              id="proyecto_curricular"
               className={editMode ? 'edit' : 'input-confirm-data'}
-              defaultValue={updateUser.facultad}
+              defaultValue={updateUser.proyecto}
               readOnly={!editMode}
               onChange={(e) => {
-                const newFacultad = e.target.value
-                setUpdateUser({ ...updateUser, codigo: newFacultad })
+                const newProyecto = e.target.value
+                setUpdateUser({ ...updateUser, proyecto: newProyecto })
               }}
             />
             {editMode && (

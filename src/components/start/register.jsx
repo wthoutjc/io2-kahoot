@@ -34,8 +34,12 @@ const Register = ({ setRenderRegister }) => {
           id="codigo-estudiantil"
           placeholder="Ej: 20181234567"
         />
-        <span>Facultad</span>
-        <select name="facultad" id="facultad" defaultValue={'Seleccionar'}>
+        <span>Proyecto Curricular</span>
+        <select
+          name="proyecto_curricular-select"
+          id="proyecto_curricular-select"
+          defaultValue={'Seleccionar'}
+        >
           <option value="Seleccionar">Seleccionar</option>
           <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
           <option value="Otro">Otro</option>

@@ -15,6 +15,8 @@ import Question3 from '../../components/questions/question3'
 import Question4 from '../../components/questions/question4'
 import Question5 from '../../components/questions/question5'
 
+import TimeModal from '../modal/timeModal'
+
 // Icons
 import * as BsIcons from 'react-icons/bs'
 
@@ -50,6 +52,7 @@ const Slider = () => {
   return (
     <>
       <QuestionContextProvider>
+        <TimeModal renderTimeModal={true} />
         <div className="slider">
           <div className="slider-content">
             <div className="slider-content-title">
