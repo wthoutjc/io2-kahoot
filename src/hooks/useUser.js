@@ -67,10 +67,44 @@ const useUser = () => {
     [setUser, history]
   )
 
+  const registerUser = useCallback(async ({ setRender, newStudent }) => {
+    const url = `${urlGeneral.current}/registrar`
+    try {
+      setRender(true)
+      const params = { newStudent }
+      const data = await postService({ url, params })
+      if (data) {
+        setRender(false)
+        return data
+      }
+    } catch (error) {
+      console.error(error)
+      return ['Falló la comunicación con el servidor', false]
+    }
+  }, [])
+
+  const updateInfoUser = useCallback(async ({ setRender, id, updateUser }) => {
+    const url = `${urlGeneral.current}/actualizar`
+    try {
+      setRender(true)
+      const params = { id, updateUser }
+      const data = await postService({ url, params })
+      if (data) {
+        setRender(false)
+        return data
+      }
+    } catch (error) {
+      console.error(error)
+      return ['Falló la comunicación con el servidor', false]
+    }
+  }, [])
+
   return {
     user,
     login,
     verifyJWT,
+    registerUser,
+    updateInfoUser,
   }
 }
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 //Hooks
 import useUser from '../../hooks/useUser'
+import useModal from '../../hooks/useModal'
 
 // Icons
 import * as BsIcons from 'react-icons/bs'
@@ -11,22 +12,41 @@ import * as BsIcons from 'react-icons/bs'
 import Slider from '../slider/slider'
 import LoadingServer from '../loaders/loadingServer'
 import TimeModal from '../modal/timeModal'
+import Notification from '../notification/notification'
+import ModalNotification from '../modal/modalNotification'
 
 //decode jwt
 import decodeJWT from 'jwt-decode'
 
 const ConfirmData = () => {
+  // Modal States
+  const { renderModal, childrenModal, setRenderModal, setChildrenModal } =
+    useModal()
+
   const [render, setRender] = useState(false)
 
-  const { user, verifyJWT } = useUser()
+  const { user, verifyJWT, updateInfoUser } = useUser()
 
   const [editMode, setEditMode] = useState(false)
   const [updateUser, setUpdateUser] = useState(decodeJWT(user).sub)
 
   const [renderSlider, setRenderSlider] = useState(false)
 
+  const notifyMessage = ({ message, ok }) => {
+    setChildrenModal({
+      title: ok ? 'Éxito: ' : 'Error: ',
+      body: <Notification notification={{ message, ok }} />,
+    })
+    setRenderModal(true)
+  }
+
   const handleUpdateInfo = () => {
-    console.log(updateUser)
+    const id = decodeJWT(localStorage.getItem('jwtStudent')).sub.id
+    updateInfoUser({ setRender, id, updateUser }).then((res) => {
+      const message = String(res[0])
+      const ok = res[1]
+      notifyMessage({ message, ok })
+    })
   }
 
   const handleStartTest = () => {
@@ -43,6 +63,13 @@ const ConfirmData = () => {
     <>
       <LoadingServer render={render} />
       <TimeModal renderTimeModal={true} />
+      {renderModal && (
+        <ModalNotification
+          renderModal={renderModal}
+          childrenModal={childrenModal}
+          onClose={() => setRenderModal(false)}
+        />
+      )}
       <div className="confirm-data">
         <div className="info-user">
           <h1>VERIFICA TU INFORMACIÓN</h1>

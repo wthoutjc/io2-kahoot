@@ -17,36 +17,30 @@ const TimeModal = ({ renderTimeModal }) => {
   const history = useHistory()
   const [timeREST, setTimeREST] = useState(null)
 
-  const updateDate = () => {
-    console.log('NOKASXD')
-    if (localStorage.getItem('jwtStudent')) {
-      const time = moment
-        .unix(decodeJWT(localStorage.getItem('jwtStudent')).exp)
-        .subtract(moment.duration(moment().format('hh:mm:ss')))
-        .format('00:mm:ss')
-      setTimeREST(time)
-    } else {
-      clearInterval(interval)
-    }
-  }
-
-  const interval = useCallback(() => {
-    setInterval(() => {
-      updateDate()
+  const intervalF = useCallback(() => {
+    const interval = setInterval(() => {
+      if (localStorage.getItem('jwtStudent')) {
+        const time = moment
+          .unix(decodeJWT(localStorage.getItem('jwtStudent')).exp)
+          .subtract(moment.duration(moment().format('hh:mm:ss')))
+          .format('00:mm:ss')
+        setTimeREST(time)
+      } else {
+        clearInterval(interval)
+      }
     }, 1000)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  useEffect(() => {
-    interval()
-  }, [interval])
 
   useEffect(() => {
     if (timeREST === '00:00:00') {
       localStorage.removeItem('jwtStudent')
       history.push('/error')
     }
-  }, [timeREST, history, interval])
+  }, [timeREST, history])
+
+  useEffect(() => {
+    intervalF()
+  }, [intervalF])
 
   return ReactDOM.createPortal(
     <>
