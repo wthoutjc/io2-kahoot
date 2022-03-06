@@ -1,11 +1,11 @@
 //Components
-import Start from '../components/start/start'
+import TimeOut from '../components/errors/timeOut'
 
 const publicRoutes = [
   {
-    path: '/a',
-    name: '',
-    component: Start,
+    path: '/error',
+    name: 'Error',
+    component: TimeOut,
     exact: true,
   },
 ]

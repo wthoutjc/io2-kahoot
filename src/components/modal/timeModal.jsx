@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom'
 import { useEffect, useState, useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
 
+// Hooks
+import useQuestions from '../../hooks/useQuestions'
+
 // Date
 import moment from 'moment'
 
@@ -12,8 +15,14 @@ import decodeJWT from 'jwt-decode'
 
 //Components
 import Loader from '../../components/loaders/loader'
+import LoadingServer from '../loaders/loadingServer'
 
 const TimeModal = ({ renderTimeModal }) => {
+  const [render, setRender] = useState(false)
+  const [times, setTimes] = useState(0)
+
+  const { sendAnswers } = useQuestions()
+
   const history = useHistory()
   const [timeREST, setTimeREST] = useState(null)
 
@@ -33,10 +42,18 @@ const TimeModal = ({ renderTimeModal }) => {
 
   useEffect(() => {
     if (timeREST === '00:00:00') {
-      localStorage.removeItem('jwtStudent')
-      history.push('/error')
+      setTimes(times + 1)
+      if (times === 1) {
+        const idStudent = decodeJWT(localStorage.getItem('jwtStudent')).sub.id
+        sendAnswers({ setRender, idStudent }).then((res) => {
+          console.log(res)
+          localStorage.removeItem('jwtStudent')
+          history.push('/error')
+        })
+      }
     }
-  }, [timeREST, history])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timeREST, history, sendAnswers])
 
   useEffect(() => {
     intervalF()
@@ -44,6 +61,7 @@ const TimeModal = ({ renderTimeModal }) => {
 
   return ReactDOM.createPortal(
     <>
+      <LoadingServer render={render} />
       {renderTimeModal && (
         <div className="time-modal">
           <div className="timer">

@@ -1,11 +1,15 @@
 import { useRef, useEffect } from 'react'
 
+//decode jwt
+import decodeJWT from 'jwt-decode'
+
+// Date
+import moment from 'moment'
+
 // Hook
 import useQuestions from '../../hooks/useQuestions'
 
-const Question5 = () => {
-  const { answers, setAnswers } = useQuestions()
-
+const Question5 = ({ answers, setAnswers }) => {
   const answersDOM = useRef()
 
   const handleChecked = (x) => {
@@ -14,12 +18,16 @@ const Question5 = () => {
     }
     const liDOM = answersDOM.current.children[x - 1].children[1]
     liDOM.setAttribute('class', 'checked')
-    setAnswers({ ...answers, question5: x })
+    const time = moment
+      .unix(decodeJWT(localStorage.getItem('jwtStudent')).exp)
+      .subtract(moment.duration(moment().format('hh:mm:ss')))
+      .format('00:mm:ss')
+    setAnswers({ ...answers, question5: [x, time] })
   }
 
   useEffect(() => {
     answersDOM.current.children[
-      answers.question5 - 1
+      answers.question5[0] - 1
     ]?.children[1].setAttribute('class', 'checked')
   }, [answers])
 

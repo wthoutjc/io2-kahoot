@@ -23,6 +23,7 @@ body {
   --color-okSecundario: #00ff6a;
   --color-errorPrimario: rgb(177, 41, 41);
   --color-errorSecundario: #f1252c;
+  --color-azulPrimario:#1e90ff;
 }
 #root {
   overflow: hidden;

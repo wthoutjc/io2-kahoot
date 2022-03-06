@@ -9,7 +9,7 @@ import useModal from '../../hooks/useModal'
 import * as BsIcons from 'react-icons/bs'
 
 //Components
-import Slider from '../slider/slider'
+import SliderContextContainer from '../slider/sliderContextContainer'
 import LoadingServer from '../loaders/loadingServer'
 import TimeModal from '../modal/timeModal'
 import Notification from '../notification/notification'
@@ -57,7 +57,7 @@ const ConfirmData = () => {
     verifyJWT({ setRender })
   }, [verifyJWT])
 
-  if (renderSlider) return <Slider />
+  if (renderSlider) return <SliderContextContainer />
 
   return (
     <>
