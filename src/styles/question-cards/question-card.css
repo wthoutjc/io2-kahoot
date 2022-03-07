@@ -23,6 +23,7 @@
   border: none;
   cursor: pointer;
   padding: 0.5em;
+  font-size: 80%;
 }
 .header-card .helpers .helpers-btn > button:nth-child(1) {
   background-color: #2980b9;
@@ -41,9 +42,8 @@
 .header-card .helpers .helpers-btn > button:hover {
   background-color: var(--color-blancoPrimario);
   color: var(--color-negroPrimario);
-  border-top: 2px solid var(--color-negroPrimario);
-  font-weight: 500;
-  transition: color 0.4s;
+  font-weight: 600;
+  transition: background-color 0.4s;
 }
 .header-card .question {
   width: 100%;

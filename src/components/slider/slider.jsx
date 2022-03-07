@@ -21,6 +21,7 @@ import TimeModal from '../modal/timeModal'
 
 // Icons
 import * as BsIcons from 'react-icons/bs'
+import * as MdIcons from 'react-icons/md'
 
 //decode jwt
 import decodeJWT from 'jwt-decode'
@@ -43,8 +44,10 @@ const EndTest = () => {
   useEffect(() => {
     const id = decodeJWT(localStorage.getItem('jwtStudent')).sub.id
     getRating({ setRender, id }).then((res) => {
-      const _rating = res[0][1]
-      setRating({ ...rating, rating: _rating })
+      if (res) {
+        const _rating = res[0][1]
+        setRating({ ...rating, rating: _rating })
+      }
       localStorage.removeItem('jwtStudent')
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,7 +65,7 @@ const EndTest = () => {
           <button className="end-test-info" onClick={handleGetRating}>
             CONSULTAR MI CALIFICACIÓN
           </button>
-          {rating && <p>Tu calificación es: {rating}</p>}
+          {rating.render && <p>Tu calificación es: {rating.rating}</p>}
         </div>
       </div>
     </>
@@ -116,8 +119,8 @@ const Slider = () => {
   const handleSendAnswers = () => {
     const idStudent = decodeJWT(localStorage.getItem('jwtStudent')).sub.id
     sendAnswers({ setRender, idStudent }).then((res) => {
-      if (!res[1]) {
-        const message = String(res[0])
+      if (Array.isArray(res) && res[1] === false) {
+        const message = res[0]
         const ok = res[1]
         return notifyMessage({ message, ok })
       }
@@ -142,7 +145,7 @@ const Slider = () => {
         <div className="slider-content">
           <div className="slider-content-title">
             <h1>PREGUNTA {pag}:</h1>
-            <h1>{pag === 1 ? 'TEORÍA' : 'PRÁCTICA'}</h1>
+            <h1>{pag >= 1 && pag <= 3 ? 'TEORÍA' : 'PRÁCTICA'}</h1>
           </div>
           {questions[pag - 1]}
           <div className="slider-content-footer">
@@ -172,7 +175,10 @@ const Slider = () => {
                 className="finish-btn"
                 onClick={() => handleSendAnswers()}
               >
-                TERMINAR Y ENVIAR
+                <p>TERMINAR Y ENVIAR</p>
+                <p>
+                  <MdIcons.MdSend />
+                </p>
               </button>
             )}
           </div>

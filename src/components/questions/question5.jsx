@@ -6,9 +6,6 @@ import decodeJWT from 'jwt-decode'
 // Date
 import moment from 'moment'
 
-// Hook
-import useQuestions from '../../hooks/useQuestions'
-
 const Question5 = ({ answers, setAnswers }) => {
   const answersDOM = useRef()
 

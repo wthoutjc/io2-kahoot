@@ -36,7 +36,9 @@ const Login = ({ setRenderRegister, setRenderModal, setChildrenModal }) => {
     }
     login({ idStudent, setLoading }).then((res) => {
       if (!res[1]) {
-        return notifyError(res[0])
+        return res[0].message
+          ? notifyError(res[0].message)
+          : notifyError(res[0])
       }
       history.push('/data')
     })

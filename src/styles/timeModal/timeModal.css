@@ -8,9 +8,15 @@
 .time-modal .timer {
   background-color: var(--color-negroPrimario);
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1em;
   border-bottom: 1px solid var(--color-blancoPrimario);
   border-radius: 0.4em;
   margin-top: 0.4em;
   user-select: none;
+}
+.time-modal .timer p {
+  font-size: 110%;
 }

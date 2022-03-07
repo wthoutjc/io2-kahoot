@@ -1,8 +1,5 @@
 import { useRef, useEffect } from 'react'
 
-// Hook
-import useQuestions from '../../hooks/useQuestions'
-
 //decode jwt
 import decodeJWT from 'jwt-decode'
 

@@ -87,6 +87,7 @@
   background-color: var(--color-blancoPrimario);
   box-sizing: border-box;
   padding: 1em;
+  user-select: none;
   display: flex;
 }
 .slider-content-title > * {
@@ -125,6 +126,9 @@
 .finish-btn:hover {
   opacity: 1 !important;
 }
+.finish-btn  p:last-child {
+  display: none;
+}
 .card-question {
   width: 100%;
   height: 100%;
@@ -153,5 +157,16 @@
 @media all and (max-width: 749px) {
   .slider-content-title h1 {
     font-size: 120%;
+  }
+  .slider-content-footer .btn-move button {
+    width: 45%;  
+  }
+  .finish-btn {
+    width: 40px;
+    height: 25px;
+    padding: 0;
+  }
+  .finish-btn  p:first-child {
+    display: none;
   }
 }
