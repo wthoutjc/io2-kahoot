@@ -31,7 +31,7 @@ const Question3Pista = () => {
       </div>
       {renderPista && (
         <div className="pista">
-          <p>No es la D.</p>
+          <p>No es la A.</p>
         </div>
       )}
     </>
@@ -92,11 +92,46 @@ const Question3 = ({ answers, setAnswers }) => {
         <div className="question">
           <h3>Enunciado</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-            nisi exercitationem enim iste. Illo nisi qui obcaecati? Ea doloribus
-            nostrum exercitationem, consequuntur id pariatur voluptatem expedita
-            tempora ipsam neque libero.
+            De las siguientes afirmaciones, ¿Cuáles describen ESPECÍFICAMENTE
+            los modelos de inventario probabilísticos?
           </p>
+          <ul>
+            <li>
+              1.
+              <p>
+                Los inventarios probabilísticos con demanda independiente se
+                caracterizan por la suposición de que sólo se conoce la
+                probabilidad de distribución de la demanda durante el tiempo de
+                producción.
+              </p>
+            </li>
+            <li>
+              2.
+              <p>
+                En todo modelo probabilístico de inventario es crucial la
+                determinación del punto de pedido (R) y el tamaño de pedido (Q),
+                ya que el costo anual esperado del faltante se afectará por
+                estos valores.
+              </p>
+            </li>
+            <li>
+              3.
+              <p>
+                El propósito de todo modelo de inventario probabilístico es en
+                esencia, disminuir en lo posible el costo total esperado para un
+                periodo determinado.
+              </p>
+            </li>
+            <li>
+              4.
+              <p>
+                Los inventarios probabilísticos son a su vez modelos
+                estocásticos cuando algunas variables están en función de un
+                modelo de probabilidad. Exiten dos tipos de modelos estocásticos
+                (punto de reorden y revisión periódica)
+              </p>
+            </li>
+          </ul>
         </div>
       </div>
       <div className="answers-card">
@@ -109,7 +144,7 @@ const Question3 = ({ answers, setAnswers }) => {
               id="rta-A"
               onChange={() => handleChecked(1)}
             />
-            <label htmlFor="rta-A">RESPUESTA A</label>
+            <label htmlFor="rta-A">A. 1 y 3</label>
           </li>
           <li>
             <input
@@ -118,7 +153,7 @@ const Question3 = ({ answers, setAnswers }) => {
               id="rta-B"
               onChange={() => handleChecked(2)}
             />
-            <label htmlFor="rta-B">RESPUESTA B</label>
+            <label htmlFor="rta-B">B. 2 y 4</label>
           </li>
           <li>
             <input
@@ -127,7 +162,7 @@ const Question3 = ({ answers, setAnswers }) => {
               id="rta-C"
               onChange={() => handleChecked(3)}
             />
-            <label htmlFor="rta-C">RESPUESTA C</label>
+            <label htmlFor="rta-C">C. 1 y 4</label>
           </li>
           <li>
             <input
@@ -136,7 +171,7 @@ const Question3 = ({ answers, setAnswers }) => {
               id="rta-D"
               onChange={() => handleChecked(4)}
             />
-            <label htmlFor="rta-D">RESPUESTA D</label>
+            <label htmlFor="rta-D">D. Todas las anteriores</label>
           </li>
         </ul>
       </div>

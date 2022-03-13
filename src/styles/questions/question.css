@@ -67,3 +67,23 @@ h2 {
 .pista-container .pista-options > button {
   background-color: var(--color-azulPrimario);
 }
+.question ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  list-style: none;
+}
+.question ul > li {
+  box-sizing: border-box;
+  padding: 0.6em;
+  display: flex;
+  margin-bottom: 0.6em;
+}
+.question ul > li:last-child {
+  margin-bottom: 0;
+}
+
+.question ul li p {
+  padding: 0 !important;
+  margin-left: 0.3em;
+}
