@@ -83,10 +83,34 @@ const Question3 = ({ answers, setAnswers }) => {
       <div className="header-card">
         <div className="helpers">
           <div className="helpers-btn">
-            <button>Ayuda teórica</button>
-            <button>Ayuda teórica</button>
+            <button
+              onClick={() =>
+                window.open(
+                  'https://drive.google.com/file/d/1OZuDrl2AGu0V8S-omVyZ33Py5M7wCRdh/view?usp=sharing'
+                )
+              }
+            >
+              Ayuda teórica
+            </button>
+            <button
+              onClick={() =>
+                window.open(
+                  'https://www.ingenioempresa.com/modelos-probabilisticos-inventario/'
+                )
+              }
+            >
+              Ayuda teórica
+            </button>
             <button onClick={handleQ3Pista}>Pista</button>
-            <button>Ayuda teórica</button>
+            <button
+              onClick={() =>
+                window.open(
+                  'https://es.slideshare.net/Niurka0302/inventario-probabilistico-28957466'
+                )
+              }
+            >
+              Ayuda teórica
+            </button>
           </div>
         </div>
         <div className="question">
