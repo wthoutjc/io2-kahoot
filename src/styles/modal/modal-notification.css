@@ -12,6 +12,8 @@
   /*animation: name duration timing-function delay iteration-count direction
     fill-mode;*/
   animation: opacityNotification 0.2s normal ease;
+  max-width: 600px;
+  overflow-x: auto;
 }
 .modal-content-title {
   box-sizing: border-box;

@@ -1,12 +1,47 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 //decode jwt
 import decodeJWT from 'jwt-decode'
 
+// Components
+import Modal from '../modal/modal'
+
+// Hooks
+import useModal from '../../hooks/useModal'
+
 // Date
 import moment from 'moment'
 
+const Question3Pista = () => {
+  const [renderPista, setRenderPista] = useState(false)
+
+  return (
+    <>
+      <div className="pista-container">
+        <h3>Esta pista esta relacionada con el punto 3.</h3>
+        <div className="pista-options">
+          <button
+            onClick={() => {
+              setRenderPista(true)
+            }}
+          >
+            Obtener mi pista
+          </button>
+        </div>
+      </div>
+      {renderPista && (
+        <div className="pista">
+          <p>No es la D.</p>
+        </div>
+      )}
+    </>
+  )
+}
+
 const Question3 = ({ answers, setAnswers }) => {
+  const { renderModal2, childrenModal2, setRenderModal2, setChildrenModal2 } =
+    useModal()
+
   const answersDOM = useRef()
 
   const handleChecked = (x) => {
@@ -28,15 +63,30 @@ const Question3 = ({ answers, setAnswers }) => {
     ]?.children[1].setAttribute('class', 'checked')
   }, [answers])
 
+  const handleQ3Pista = () => {
+    setChildrenModal2({
+      title: `PISTA`,
+      body: <Question3Pista />,
+    })
+    setRenderModal2(true)
+  }
+
   return (
     <div className="card-question">
+      {renderModal2 && (
+        <Modal
+          renderModal2={renderModal2}
+          childrenModal2={childrenModal2}
+          onClose={() => setRenderModal2(false)}
+        />
+      )}
       <div className="header-card">
         <div className="helpers">
           <div className="helpers-btn">
-            <button>1234</button>
-            <button>1234</button>
-            <button>1234</button>
-            <button>1234</button>
+            <button>Ayuda teórica</button>
+            <button>Ayuda teórica</button>
+            <button onClick={handleQ3Pista}>Pista</button>
+            <button>Ayuda teórica</button>
           </div>
         </div>
         <div className="question">

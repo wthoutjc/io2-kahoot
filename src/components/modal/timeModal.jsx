@@ -46,7 +46,6 @@ const TimeModal = ({ renderTimeModal }) => {
       if (times === 1) {
         const idStudent = decodeJWT(localStorage.getItem('jwtStudent')).sub.id
         sendAnswers({ setRender, idStudent }).then((res) => {
-          console.log(res)
           localStorage.removeItem('jwtStudent')
           history.push('/error')
         })

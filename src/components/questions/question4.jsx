@@ -178,10 +178,6 @@ const Q4Calculadora = () => {
     setQ4Results({ ...q4Results, q, sigTL, z })
   }
 
-  useEffect(() => {
-    console.log(q4Results)
-  }, [q4Results])
-
   return (
     <>
       {renderModal && (
@@ -292,6 +288,32 @@ const Q4Calculadora = () => {
   )
 }
 
+const Question4Pista = () => {
+  const [renderPista, setRenderPista] = useState(false)
+
+  return (
+    <>
+      <div className="pista-container">
+        <h3>Esta pista esta relacionada con el punto 4.</h3>
+        <div className="pista-options">
+          <button
+            onClick={() => {
+              setRenderPista(true)
+            }}
+          >
+            Obtener mi pista
+          </button>
+        </div>
+      </div>
+      {renderPista && (
+        <div className="pista">
+          <p>No es la A.</p>
+        </div>
+      )}
+    </>
+  )
+}
+
 const Question4 = ({ answers, setAnswers }) => {
   const { renderModal2, childrenModal2, setRenderModal2, setChildrenModal2 } =
     useModal()
@@ -333,6 +355,14 @@ const Question4 = ({ answers, setAnswers }) => {
     setRenderModal2(true)
   }
 
+  const handleQ4Pista = () => {
+    setChildrenModal2({
+      title: `PISTA`,
+      body: <Question4Pista />,
+    })
+    setRenderModal2(true)
+  }
+
   return (
     <div className="card-question">
       {renderModal2 && (
@@ -348,14 +378,14 @@ const Question4 = ({ answers, setAnswers }) => {
             <button
               onClick={() =>
                 window.open(
-                  'https://drive.google.com/file/d/1Q2cU8_TG1F_06Mi8jf2psIuTzeB0AY6o/view?usp=sharing'
+                  'https://drive.google.com/file/d/1c1kBLCtXGzZwesIlrIscMO5haOSxy6oF/view?usp=sharing'
                 )
               }
             >
               Ayuda teórica
             </button>
             <button onClick={handleQ4HelpFormula}>Ayuda fórmulas</button>
-            <button>Pista</button>
+            <button onClick={handleQ4Pista}>Pista</button>
             <button onClick={handleQ4Calculadora}>Calculadora</button>
           </div>
         </div>
@@ -399,7 +429,7 @@ const Question4 = ({ answers, setAnswers }) => {
               id="rta-C"
               onChange={() => handleChecked(3)}
             />
-            <label htmlFor="rta-C">C. 331 unidades</label>
+            <label htmlFor="rta-C">C. 327 unidades</label>
           </li>
           <li>
             <input
@@ -408,7 +438,7 @@ const Question4 = ({ answers, setAnswers }) => {
               id="rta-D"
               onChange={() => handleChecked(4)}
             />
-            <label htmlFor="rta-D">D. 327 unidades</label>
+            <label htmlFor="rta-D">D. 331 unidades</label>
           </li>
         </ul>
       </div>

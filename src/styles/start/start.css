@@ -23,7 +23,12 @@ body {
   --color-okSecundario: #00ff6a;
   --color-errorPrimario: rgb(177, 41, 41);
   --color-errorSecundario: #f1252c;
-  --color-azulPrimario:#1e90ff;
+  --color-azulPrimario: #1e90ff;
+  /*Table*/
+  --color-grisPrimario2: #1e272e;
+  --color-grisSecundario2: #222f3e;
+  --color-whitePrimario: #c7ecee;
+  --color-whiteSecundario: #7f8c8d;
 }
 #root {
   overflow: hidden;
@@ -142,7 +147,40 @@ body {
 .error {
   background-color: var(--color-errorPrimario) !important;
 }
+.warning-time {
+  width: 80%;
+  background-color: var(--color-blancoPrimario);
+  display: flex;
+  box-sizing: border-box;
+  padding: 0.4em;
+  margin-top: 0.8em;
+}
+.warning-time > * {
+  color: var(--color-negroPrimario) !important;
+}
 
+.warning-time > p {
+  margin-left: 0.4em;
+}
+
+.get-ranking {
+  width: 80%;
+  margin-top: 0.5em;
+}
+
+.get-ranking button {
+  cursor: pointer;
+  background-color: #00ff6a !important;
+  padding: 0.5em;
+  border: none;
+  border-radius: 0.4em;
+  color: var(--color-negroPrimario) !important;
+  font-weight: 800 !important;
+}
+.get-ranking button:hover {
+  color: var(--color-grisSecundario) !important;
+  transition: color 0.2s;
+}
 @media all and (max-width: 749px) {
   .start-by {
     display: none;
@@ -156,5 +194,9 @@ body {
   .login form {
     width: 90%;
     height: 78%;
+  }
+  .get-ranking,
+  .warning-time {
+    width: 100%;
   }
 }

@@ -89,6 +89,23 @@ const Login = ({ setRenderRegister, setRenderModal, setChildrenModal }) => {
             </button>
           )}
         </div>
+        <div className="warning-time">
+          <h3> NOTA:</h3>
+          <p>
+            Cuando inicies sesión va a iniciar el tiempo de 40 minutos para tu
+            prueba
+          </p>
+        </div>
+        <div className="get-ranking">
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              history.push('/ranking')
+            }}
+          >
+            CONSULTA EL RANKING
+          </button>
+        </div>
       </form>
     </>
   )

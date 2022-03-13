@@ -23,6 +23,7 @@ const useQuestions = () => {
         setRender(false)
         return data
       }
+      return ['ok', true]
     } catch (error) {
       console.error(error)
     }
@@ -42,11 +43,26 @@ const useQuestions = () => {
     }
   }, [])
 
+  const getRanking = useCallback(async ({ setRender }) => {
+    const url = `${urlGeneral.current}/ranking`
+    try {
+      setRender(true)
+      const data = await getService({ url })
+      if (data) {
+        setRender(false)
+        return data
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }, [])
+
   return {
     answers,
     setAnswers,
     sendAnswers,
     getRating,
+    getRanking,
   }
 }
 

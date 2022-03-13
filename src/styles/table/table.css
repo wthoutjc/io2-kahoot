@@ -1,0 +1,70 @@
+.table-container {
+  width: 100%;
+  display: flex;
+  max-width: 800px;
+  overflow: auto;
+}
+.table-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(26, 53, 80, 0.897);
+}
+.table-container::-webkit-scrollbar-thumb {
+  background-color: rgb(73, 109, 145);
+  border-radius: 20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table thead > tr {
+  background-color: var(--color-grisSecundario2);
+  color: white;
+  text-align: left;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-weight: 400;
+}
+table th,
+table td {
+  padding: 12px 15px;
+  box-sizing: border-box;
+}
+table tbody td {
+  color: white;
+  user-select: none;
+}
+table tbody tr {
+  border-bottom: 1px solid var(--color-whiteSecundario);
+}
+table tbody tr td {
+  color: var(--color-grisSecundario2);
+}
+table tbody tr:nth-of-type(even) {
+  background-color: #c7ecee;
+}
+table tbody tr:nth-of-type(odd) {
+  background-color: #95afc0;
+}
+.see-image {
+  background-color: inherit;
+  border: none;
+  color: var(--color-grisPrimario2);
+  font-size: 100%;
+  cursor: pointer;
+}
+table tbody tr:last-of-type {
+  border-bottom: 3px solid var(--color-whiteSecundario);
+}
+table tbody tr:nth-of-type(odd):hover td button,
+table tbody tr:nth-of-type(even):hover td button,
+table tbody tr:nth-of-type(odd):hover td,
+table tbody tr:nth-of-type(even):hover td,
+table tbody tr:nth-of-type(even):hover,
+table tbody tr:nth-of-type(odd):hover {
+  background-color: var(--color-grisPrimario2);
+  color: var(--color-whitePrimario);
+}
