@@ -131,10 +131,7 @@ const Question2 = ({ answers, setAnswers }) => {
               id="rta-A"
               onChange={() => handleChecked(1)}
             />
-            <label htmlFor="rta-A">
-              A. EOQ básico, EOQ con descuentos por cantidad, cantidad económica
-              a producir.
-            </label>
+            <label htmlFor="rta-A">A. B y C</label>
           </li>
           <li>
             <input
@@ -156,10 +153,8 @@ const Question2 = ({ answers, setAnswers }) => {
               onChange={() => handleChecked(3)}
             />
             <label htmlFor="rta-C">
-              C. Registro de asistencia de trabajadores, conteo de empanadas por
-              parte del gerente a los peones de la institución, una lista de
-              faltas de los prestadores de servicio de aseo y mantenimiento
-              general.
+              C. EOQ básico, EOQ con descuentos por cantidad, cantidad económica
+              a producir.
             </label>
           </li>
           <li>
@@ -169,7 +164,12 @@ const Question2 = ({ answers, setAnswers }) => {
               id="rta-D"
               onChange={() => handleChecked(4)}
             />
-            <label htmlFor="rta-D">D. Todas las anteriores</label>
+            <label htmlFor="rta-D">
+              D. Registro de asistencia de trabajadores, conteo de empanadas por
+              parte del gerente a los peones de la institución, una lista de
+              faltas de los prestadores de servicio de aseo y mantenimiento
+              general.
+            </label>
           </li>
         </ul>
       </div>
