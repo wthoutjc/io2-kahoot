@@ -151,8 +151,8 @@ const Question3 = ({ answers, setAnswers }) => {
               <p>
                 Los inventarios probabilísticos son a su vez modelos
                 estocásticos cuando algunas variables están en función de un
-                modelo de probabilidad. Exiten dos tipos de modelos estocásticos
-                (punto de reorden y revisión periódica)
+                modelo de probabilidad. Existen dos tipos de modelos
+                estocásticos (punto de reorden y revisión periódica)
               </p>
             </li>
           </ul>
